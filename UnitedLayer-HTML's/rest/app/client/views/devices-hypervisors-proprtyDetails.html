@@ -1,0 +1,39 @@
+<div class="row">
+    <!--Tabs Level 1 End-->
+
+    <!---Table Start -->
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+            <div class="ui-selectee">
+                <nav class="column">
+                    <h1> Properties </h1>
+                </nav>
+            </div>
+        </div>
+        <section id="no-more-tables" class="margintop20 middle-wrapper">
+            <table id="example" class="example table  table-condensed cf table-striped">
+                <thead class="cf">
+                    <tr>
+                        <th>
+                            Attribute
+                        </th>
+                        <th>
+                            Current Value
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="(key, value) in detalis">
+                        <td>
+                            {{key}}
+                        </td>
+                        <td>{{value}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+<!--- Table End--->

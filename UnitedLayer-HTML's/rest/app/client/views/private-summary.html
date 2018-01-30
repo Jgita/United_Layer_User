@@ -1,0 +1,127 @@
+<div class="content-wrapper middle-wrapper">
+    <div class="row">
+        <section id="no-more-tables">
+            <!--<div ng-if=name=='vmware'>-->
+            <div>
+                <table class="Summary-box table table-condensed">
+                    <thead class="summarytd">
+                        <tr>
+                            <th ng-repeat=" item in headers ">{{item.name}}</th>
+                            <th>Manage</th>
+                        </tr>
+                    </thead>
+                    <tbody class="summarytd ">
+                        <tr data-ng-show="items.length === 0 ">
+                            <td class="center " colspan="3 ">Nobody is here</td>
+                            <!--<div loader-css="ball-clip-rotate "></div>-->
+                        </tr>
+
+                        <tr ng-repeat="item in items ">
+
+                            <td><a ng-click="routing(item) " ui-sref="home.unitedCloudPrivate.details ">{{item.name}}</a></td>
+                            <td>{{item.virtualizationPlatform}}</td>
+                            <td class="numeric "> <i class="fa-server fa fa-fw fa-lg red "></i> {{item.Servers}}</td>
+                            <td><i class="fa-object-group fa fa-fw fa-lg blue "></i>{{item.VMs}}</td>
+                            <td> <i class="fa fa-compress fa-fw fa-lg yellow "> </i>{{item.networkDevices}}</td>
+                            <td>
+                                <div class="action-icons ">
+                                    <a class="fa fa-external-link " href="https://{{item.name}}.uproxy.unitedlayer.com/ " target="_blank "></a>
+                                    <a class="fa fa-external-link-square " href="https://{{item.name}}.uproxy.unitedlayer.com/ "></a>
+                                    <a ng-click="showModal()" class="fa fa-object-group"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!--Summary Strat-->
+    <!--Component Summary for vmware, OpenStack, Hyper-v -->
+    <div class="row paddingtop ">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 paddingright ">
+            <div class="cardbox ">
+                <div class="row cardbox-header ">Component Summary </div>
+                <div class="row cardbox-inner " ng-repeat="item in componentSummary ">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                        <i class="fa fa-{{item.icon}} "></i>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+                        <p class="{{item.color}} ">{{item.count}}</p>
+                        <h2>{{item.name}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CardBox for vmware, OpenStack -->
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 ">
+            <div ng-if="(name=='vmware' || name=='OpenStack' ) ">
+                <div ng-repeat="card in cardBoxSummary ">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{card.class}} ">
+                        <div class="cardbox ">
+                            <div class="row cardbox-header ">{{card.header}}</div>
+                            <div class="row ">
+                                <div class="row cardbox-inner ">
+
+                                    <h3>{{card.name}}</h3>
+                                    <div class="progress ">
+                                        <uib-progressbar max="100 " value="percent[$index] " animate="true " type="success ">
+                                            <i><span style="color:white;font-weight:normal;white-space:nowrap; " >{{ percent[$index] | number:2 }}% used</span></i>
+                                        </uib-progressbar>
+                                    </div>
+
+                                </div>
+                                <div class="row cardbox-inner ">
+                                    <h3>Total</h3>
+                                    <p class=" ">{{card.totalCount}}</p>
+                                </div>
+                                <div class="row cardbox-inner ">
+                                    <h3>Available</h3>
+                                    <p class=" ">{{card.availableCount}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- table for vmware, OpenStack, Hyper-v -->
+
+            <div class="row ">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 paddingleft {{paddingtop}}">
+                    <div class="cardbox ">
+                        <div class="row cardbox-header ">Cloud Information</div>
+                        <div class="row ">
+                            <table class="example table table-condensed cf ">
+                                <tbody>
+                                    <tr ng-repeat="(key, value) in cloudData ">
+                                        <td>
+                                            {{key}}
+                                        </td>
+                                        <td>{{value}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div componentSummary>
+        component
+    </div>
+
+    <div VCPU ng-if=name=='vmware'>vmware</div>
+
+    <div VCPU ng-if=name=='vmware'>gggg</div>
+
+    <div VCPU ng-if=name=='vmware'>hhhh</div>
+
+    <div cloudinformation>cloudInformation</div>-->
+
+    </div>
+</div>

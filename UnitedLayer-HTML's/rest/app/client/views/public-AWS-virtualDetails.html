@@ -1,0 +1,72 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row db-info shadow-btm"> </div>
+</div>
+<div class="row">
+    <!--Tabs Level 1 End-->
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                <h1>{{selectedRegion.name}} </h1><span> - Virtual Machines</span>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div class="action-bar">
+                    <button class="btn btn-default" type="button" ng-click="showModal()"> Create Instance</button>
+                </div>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 search-widget pull-right">
+                <form class="navbar-form">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter keyword">
+                        <button class="btn btn-search" type="submit">
+                            <i class="fa fa-search"></i>
+                            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <section id="no-more-tables" class="margintop20 middle-wrapper">
+            <table id="example" class="example table table-condensed cf">
+                <thead class="cf">
+                    <tr>
+                        <th ng-repeat="item in headers">
+                            {{item.name}}
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in instancesData">
+                        <td>
+                            {{item.id}}
+                        </td>
+                        <td>
+                            {{item.type}}
+                        </td>
+                        <td>
+                            {{item.publicIP}}
+                        </td>
+                        <td>
+                            {{item.state}}
+                        </td>
+                        <td>
+                            {{item.launchTime}}
+                        </td>
+
+                        <td>
+                            <div class="action-icons">
+                                <a ng-click="AWSAccountsDetails(item,selectedRegion)" class="fa fa-stop-circle-o" tooltip-class="customClass" uib-tooltip="Stop" ui-sref="home.unitedCloudPublic.details.instances"></a>
+                                <a class="fa fa-ban" tooltip-class="customClass" uib-tooltip="Terminate" href="#"></a>
+                                <a class="fa fa-picture-o" tooltip-class="customClass" uib-tooltip="Create Image" href="#"></a>
+                                <a class="fa fa-clone" tooltip-class="customClass" uib-tooltip="Clone" href="#"></a>
+                                <a class="fa fa-object-group" tooltip-class="customClass" uib-tooltip="Attach Autoscaling Group" href="#"></a>
+                                <a class="fa fa-connectdevelop" tooltip-class="customClass" uib-tooltip="Attach Network Interface" href="#"></a>
+                                <a class="fa fa-balance-scale" tooltip-class="customClass" uib-tooltip="Attach Load Balancer" href="#"></a>
+                                <a class="fa fa-info-circle" tooltip-class="customClass" uib-tooltip="Details" href="#"></a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

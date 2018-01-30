@@ -1,0 +1,19 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 main-content-wrapper">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> 
+    </div>
+
+    <!--Content Start-->
+
+    <!--Tabs Level 1 Start-->
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tabs-level1">
+        <div class="ui-selectee">
+            <nav class="column">
+                <uib-tabset>
+                    <uib-tab active="activeTabIndex" ng-repeat="step in steps" heading="{{step.name}}" ui-sref="{{step.route}}"></uib-tab>
+                </uib-tabset>
+            </nav>
+            <div ui-view></div>
+        </div>
+    </div>
+</div>

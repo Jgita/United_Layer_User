@@ -1,0 +1,597 @@
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tabs-level1">
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <div class="ui-selectee">
+            <nav class="column">
+                <ul class="nav nav-tabs">
+                    <span class="ulheading">Dashboard</span>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 company-name"><a href="#"><i class="fa fa-cog" aria-hidden="true"></i></a></div>
+</div>
+<!--Tabs Level 1 End-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row db-info shadow-btm"> </div>
+</div>
+
+<div class="row" ng-controller="customer-dashboard-controller as vm">
+    <!--Tabs Level 1 End-->
+    <!--content wrapper Start-->
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+        <div class="row">
+            <h1>Infrastructure-as-a-Service</h1>
+        </div>
+        <div class="row paddingtop">
+
+            <div ng-repeat="item in privateCloud track by $index" class="{{colStyle}} {{item.classStyle}} ">
+                <!--<div cg-busy="{promise:myPromise, message:'Loading...', backdrop:true, delay:0, minDuration:5000}">-->
+                    <div class="middle-wrapper Dashwrap {{item.classTop}}">
+                        <div class="row">
+                            <h4>Private Cloud</h4> - {{item.name}} </div>
+                        <!--<div class="row Dashborder">Graph will come here</div>-->
+                        <div class="Dashborder">
+                            <div class="row paddingtopbar paddingleft paddingright" ng-repeat="bar in progressBar">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{bar.cloudName}}</div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 table-button">Free:{{100 - item.progressValue[$index]}}</div></div>
+                                <div class="row">
+                                    <uib-progressbar max="100" value="item.progressValue[$index]" animate="true " type="{{bar.type}}">
+                                        <i><span style="color:white;font-weight:normal;white-space:nowrap;font-style: normal; " ></span></i>
+                                        <!--<i><span style="color:white;font-weight:normal;white-space:nowrap;font-style: normal; " >{{ item.progressValue[$index]}}%</span></i>-->
+                                    </uib-progressbar>
+                                </div>
+                                <!--<div class="row">{{bar.core}} {{bar.unit}}</div>-->
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Used:{{ item.progressValue[$index]}}%</div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 table-button">Capacity:100</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row Dashborder2">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingright">
+                                    <p class="bigtextdash">SF {{item.dataCenter}}</p>
+                                    <h2>Data Center</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="yellow bigtext2">{{item.virtualMachines}}</p>
+                                    <h2>Virtual Machines</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="red bigtext2">{{item.alerts}}</p>
+                                    <h2>Alerts</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row paddingtop">
+                            <div class="row">
+                                <div class="col-xs-7 col-sm-7 col-md-6 col-lg-7">
+                                    <h2>Utilization</h2>
+                                </div>
+                                <div class="col-xs-5 col-sm-5 col-md-6 col-lg-5">
+                                    <span class="legendgreen"></span>
+                                    <span class="lightcolor paddingright">Used</span>
+                                    <span class="legendlight "></span>
+                                    <span class="lightcolor">Unused</span>
+                                </div>
+                            </div>
+                            <div class="row padding30">
+                                <!--<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            </div>-->
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingright">
+                                    <div class="row minusmargin">
+                                        <canvas id="private-CPU-halfDonut{{$index}}" width="50" height="50"></canvas>
+                                    </div>
+                                </div>
+                                <!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            </div>-->
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                                    <div class="row minusmargin">
+                                        <canvas id="private-RAM-halfDonut{{$index}}" width="50" height="50"></canvas>
+                                    </div>
+                                </div>
+                                <!--<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                            </div>-->
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 textcenter paddingright">CPU</div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 textcenter paddingleft">RAM</div>
+                            </div>
+                        </div>
+                    </div>
+                <!--</div>-->
+            </div>
+        </div>
+
+        <div class="row paddingtop">
+            <div ng-repeat="item in publicCloud" class="col-xs-6 col-sm-6 col-md-6 col-lg-6 {{item.classStyle}} ">
+                <div class="middle-wrapper Dashwrap">
+                    <div class="row">
+                        <h4>Public Cloud</h4> - {{item.name}} </div>
+                    <div class="row paddingtop">
+
+                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 Dashborder-right">
+                            <div class="row">
+                                <span class="legendpurple"></span>
+                                <span class="lightcolor paddingright">Running</span>
+                                <span class="legendlight"></span>
+                                <span class="lightcolor">Stopped</span>
+                            </div>
+                            <div class="row ">
+                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 minusmargin2">
+                                    <canvas id="public-halfDonut{{$index}}" width="50" height="50"></canvas>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="row textcenter minusmargincloud2">{{publicIntancesCount[$index]}}</div>
+                            </div>
+                            <div class="row">
+                                <div class="row textcenter minusmargincloud">{{item.instances}}</div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 paddingleft">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                                    <p class="yellow bigtext2">{{item.S3Buckets}}</p>
+                                    <h2>S3 Buckets</h2>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                                    <p class="red bigtext2">{{item.elasticIPs}}</p>
+                                    <h2>Elastic IPs</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                                    <p class="purple bigtext2">{{item.RDSInstances}}</p>
+                                    <h2>RDS Instances</h2>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                                    <p class="neongreen bigtext2">{{item.loadBalancer}}</p>
+                                    <h2>Load Balancer</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row paddingtop">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingright ">
+                <div class="middle-wrapper Dashwrap">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <h4>United Connect</h4>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right">
+                            <ul class="dashtab">
+                                <li ng-repeat="item in unitedConnect" ng-class="{active: activeLineTab == item.name}"><a ng-click="lineGraph(item.name, item.dataValue)" class="">{{item.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row paddingtop">
+                        <canvas id="line-chart" width="479" height="180"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                <div class="middle-wrapper Dashwrap">
+                    <div class="row">
+                        <h4>Colo Assets</h4>
+                    </div>
+                    <div class="row paddingtop" ng-style="style">
+                        <div class="row">
+                            <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4  ">
+                                <!--Graph will come here-->
+                                <h2><span class="colotext">{{totalServers}}</span> Servers</h2>
+                                <uib-progress style="width: 122px" max="totalServers">
+                                    <uib-bar ng-repeat="bar in serversStacked track by $index" value="bar.value" type="{{bar.type}}"><span>{{bar.value}}</span></uib-bar>
+                                </uib-progress>
+                            </div>
+
+                            <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <!--Graph will come here-->
+                                <h2><span class="colotext">{{totalSANs}}</span> SANs</h2>
+                                <uib-progress style="width: 122px" max="totalSANs">
+                                    <uib-bar ng-repeat="bar in SANsStacked track by $index" value="bar.value " type="{{bar.type}}"><span>{{bar.value}}</span></uib-bar>
+                                </uib-progress>
+                            </div>
+
+                            <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <!--Graph will come here-->
+                                <h2><span class="colotext">{{totalFirewalls}}</span> Firewalls</h2>
+                                <uib-progress style="width: 122px" max="totalFirewalls">
+                                    <uib-bar ng-repeat="bar in firewallsStacked track by $index" value="bar.value " type="{{bar.type}}"><span>{{bar.value}}</span></uib-bar>
+                                </uib-progress>
+                            </div>
+                        </div>
+
+                        <div class="row colopaddingtop">
+                            <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4  ">
+                                <!--Graph will come here-->
+                                <h2><span class="colotext">{{totalSwitch}}</span> Switch</h2>
+                                <uib-progress style="width: 122px" max="totalSwitch">
+                                    <uib-bar ng-repeat="bar in switchStacked track by $index" value="bar.value" type="{{bar.type}}"><span>{{bar.value}}</span></uib-bar>
+                                </uib-progress>
+                            </div>
+
+                            <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <!--Graph will come here-->
+                                <h2><span class="colotext">{{totalVM}}</span> VM</h2>
+                                <uib-progress style="width: 122px" max="totalVM">
+                                    <uib-bar ng-repeat="bar in VMStacked track by $index" value="bar.value " type="{{bar.type}}"><span>{{bar.value}}</span></uib-bar>
+                                </uib-progress>
+                            </div>
+
+                            <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                <!--Graph will come here-->
+                                <h2><span class="colotext">{{totalLoadBalancer}} </span>Load Balancer</h2>
+                                <uib-progress style="width: 122px" max="totalLoadBalancer">
+                                    <uib-bar ng-repeat="bar in loadBalancerStacked track by $index" value="bar.value " type="{{bar.type}}"><span>{{bar.value}}</span></uib-bar>
+                                </uib-progress>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Infrastructure-as-a-Service End-->
+        <div class="row paddingtop">
+            <h1>Application-Monitoring-as-a-Service</h1>
+        </div>
+        <div class="row paddingtop">
+            <div class="middle-wrapper Dashwrap ">
+                <div class="row">
+                    <h4>Top2 Services</h4>
+                </div>
+                <div class="{{item.classPaddingTop}}" ng-repeat="item in applicationMonitoring">
+                    <div class="row {{item.className}}">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingright paddingtop">
+                            <div class="row"><i class="fa fa-database fa-lg purple"></i>
+                                <h5>{{item.name}}</h5>
+                            </div>
+                            <div class="row paddingtop"><span class="toplable paddingright"><strong>CPU:</strong> {{item.cpu}} Core (2.44 GHz each)</span> <span class="toplable paddingright paddingleft"><strong>Memory: </strong> {{item.memory}} GB Disk</span>
+                                <span class="toplable paddingleft"><strong>Space:</strong> {{item.space}} TB</span></div>
+                            <div class="row barpaddingtop"><span class="toplable paddingright"><strong>Status: </strong>{{item.status}}</span> <span class="toplable paddingright paddingleft"><strong>Last status checked: </strong>{{item.lastStatus}} min ago</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft textcenter">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="yellow bigtext">{{item.throughput}}</p>
+                                    <h2>Throughput (Request/min)</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="red bigtext">{{item.activeConnection}}</p>
+                                    <h2>Current Active Connection</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="purple bigtext">{{item.activeRequest}}</p>
+                                    <h2>Current Active Request</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="neongreen bigtext">{{item.responseTime}} <span class="toplable">ms</span></p>
+                                    <h2>Server Response Time</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="purple bigtext">{{item.dataThroughput}} <span class="toplable">KB/sec</span></p>
+                                    <h2>Data Throughput</h2>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                                    <p class="yellow bigtext">{{item.dataProcessed}}</p>
+                                    <h2>Data Processed</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Application-Monitoring-as-a-Service End-->
+        <div class="row paddingtop">
+            <h1>Security-as-a-Service</h1>
+        </div>
+
+        <div class="row paddingtop">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingright ">
+                <div class="middle-wrapper">
+                    <div class="row Dashwrap">
+                        <h4>Top 5 Most Vulnerable Hosts</h4>
+                    </div>
+                    <div class="row table-responsive">
+                        <section id="no-more-tables" class="margintop20 middle-wrapper">
+                            <table id="example" class="table">
+                                <thead class="cf">
+                                    <tr>
+                                        <th ng-repeat="header in vulnerableHeaders">
+                                            {{header.name}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in vulnerableItems">
+                                        <td>
+                                            {{item.ipAddress}}
+                                        </td>
+                                        <td>
+                                            {{item.DNS}}
+                                        </td>
+                                        <td>
+                                            {{item.Vulnerabilities}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                <div class="middle-wrapper">
+                    <div class="row Dashwrap">
+                        <h4>Vulnerabilities Discovered</h4>
+                    </div>
+                    <div class="row table-responsive">
+                        <section id="no-more-tables" class="margintop20 middle-wrapper">
+                            <table id="example" class="table">
+                                <thead class="cf">
+                                    <tr>
+                                        <th ng-repeat="item in vulnerabilitiesHeaders">
+                                            {{item.name}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in vulnerabilitiesItems">
+                                        <td>
+                                            {{item.name}}
+                                        </td>
+                                        <td>
+                                            {{item.mitigated}}
+                                        </td>
+                                        <td>
+                                            {{item.unmitigated}}
+                                        </td>
+                                        <td>
+                                            {{item.exploitable}}
+                                        </td>
+                                        <td>
+                                            <uib-progressbar class="progress-gray" ng-if="item.name !== '-'" max="100" value="item.value" animate="true " type="success">
+                                                <i><span style="color:white;font-weight:normal;white-space:nowrap;font-style: normal; " >{{ item.value }}%</span></i>
+                                            </uib-progressbar>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Security-as-a-Service End-->
+        <div class="row paddingtop">
+            <h1>Compliance-as-a-Service</h1>
+        </div>
+        <div class="row paddingtop">
+            <div ng-repeat="item in complianceService">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{item.className}} ">
+                    <div class="middle-wrapper Dashwrap">
+                        <div class="row">
+                            <div class="bigtext-compliance">{{item.value}} </div>
+                            <div class="compliancetext">{{item.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row paddingtop">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingright ">
+                <div class="middle-wrapper Dashwrap">
+                    <div class="row">
+                        <h4>Top Failing Policies</h4>
+                    </div>
+                    <div class="row">
+                        <ul class="policiestab">
+                            <li ng-repeat="item in failingPolicies" ng-class="{active: activeBarTab == item.id}"><a ng-click="barGraph(item.id, item.dataValue)" class="">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="row paddingtop">
+                        <!--Graph will come here-->
+                        <canvas id="bar-chart" width="700" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingright paddingleft">
+                <div class="middle-wrapper">
+                    <div class="row Dashwrap">
+                        <h4>Top 5 Passing Policies</h4>
+                    </div>
+                    <div class="row table-responsive">
+                        <section id="no-more-tables" class="margintop20 middle-wrapper" ng-style="height">
+                            <table id="example" class="table">
+                                <thead class="cf">
+                                    <tr>
+                                        <th ng-repeat="item in passingPoliciesHeaders">
+                                            {{item.name}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in passingPoliciesItms">
+                                        <td>
+                                            {{item.title}}
+                                        </td>
+                                        <td>
+                                            <uib-progressbar class="progress-red" max="100" value="item.value" animate="true " type="warning">
+                                                <i><span style="color:white;font-weight:normal;white-space:nowrap;font-style: normal; " >{{ item.value}}%</span></i>
+                                            </uib-progressbar>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                <div class="middle-wrapper">
+                    <div class="row Dashwrap">
+                        <h4>Top 5 Failing Policies</h4>
+                    </div>
+                    <div class="row table-responsive">
+                        <section id="no-more-tables" class="margintop20 middle-wrapper" ng-style="height">
+                            <table id="example" class="table">
+                                <thead class="cf">
+                                    <tr>
+                                        <th ng-repeat="item in failingPoliciesHeaders">
+                                            {{item.name}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in failingPoliciesItms">
+                                        <td>
+                                            {{item.title}}
+                                        </td>
+                                        <td>
+                                            <uib-progressbar class="progress-green" max="100" value="item.value" animate="true " type="danger">
+                                                <i><span style="color:white;font-weight:normal;white-space:nowrap;font-style: normal; " >{{ item.value}}%</span></i>
+                                            </uib-progressbar>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Compliance-as-a-Service End-->
+        <div class="row paddingtop">
+            <h1>Tickets and Maintenance Schedule</h1>
+        </div>
+        <div class="row paddingtop">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 paddingright ">
+                <div class="middle-wrapper Dashwrap tickets-maintenance">
+                    <div class="row">
+                        <div ng-repeat="item in topTickets" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{item.className}}">
+                            <div class="{{item.color}} ticketbox">
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><strong>{{item.title}}</strong></div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 textright">{{item.name}}</div>
+                                </div>
+                                <div class="row paddingtopbar">ID: {{item.id}}</div>
+                                <div class="row text_elipsis">{{item.alert}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row paddingtop">
+                        <div ng-repeat="item in bottomTickets" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{item.className}}">
+                            <div class="{{item.color}} ticketbox">
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><strong>{{item.title}}</strong></div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 textright">{{item.name}}</div>
+                                </div>
+                                <div class="row paddingtopbar">ID: {{item.id}}</div>
+                                <div class="row text_elipsis">{{item.alert}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 paddingleft">
+                <div class="middle-wrapper Dashwrap">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                            <h4>Maintenance</h4>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 drop">
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);" aria-expanded="false">All Clouds<b class="dropdown-arrow"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a data-toggle="tab" href="#s3">Cloud 1</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#s4">Cloud 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div ng-if="showCalender" class="row paddingtopbar">
+                        <!--<div class="row calendar" uib-tooltip="{{selected}}" style="display: block;" uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options">
+                        </div>-->
+                        <div class="row calendar-arrow">
+
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <a mwl-date-modifier date="vm.viewDate" decrement="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                                    <i class="fa  fa-angle-left" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">{{ vm.calendarTitle }}
+                                <!--<span class="text-center">{{ vm.calendarTitle }}</span>-->
+                            </div>
+                            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                                <a mwl-date-modifier date="vm.viewDate" increment="vm.calendarView" ng-click="vm.cellIsOpen = false">
+                                    <i class="fa  fa-angle-right" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="dashcalendar">
+                            <mwl-calendar events="vm.events" view="vm.calendarView" view-title="vm.calendarTitle" view-date="vm.viewDate" on-event-click="vm.eventClicked(calendarEvent)" on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                                cell-is-open="vm.cellIsOpen" day-view-start="06:00" day-view-end="22:59" day-view-split="30" cell-modifier="vm.modifyCell(calendarCell)" cell-auto-open-disabled="true" on-timespan-click="vm.timespanClicked(calendarDate, calendarCell)">
+                            </mwl-calendar>
+                        </div>
+                    </div>
+
+                    <div ng-if="showEvents" class="maintenance">
+                        <div class="row maintenance-list">
+                            <ul>
+                                <li ng-repeat="item in events">
+                                    <span class="pull-left eventDot" ng-style="{backgroundColor: item.color.primary}"></span>
+                                    <a ng-click="getEventsDetails(item)" ui-sref="home.eventsInfo"> Ticket {{item.calendarEventId}}</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="row action-icons table-button">
+                            <a class="fa fa-chevron-left" ng-click="back()"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row paddingtop">
+            <div ng-repeat="item in ticketsCount" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{item.className}} ">
+                <div class="middle-wrapper Dashwrap {{item.classTop}}">
+                    <div class="row">
+                        <h4>{{item.title}}</h4>
+                    </div>
+                    <div class="row paddingtop">
+                        <span class="legendred"></span>
+                        <span class="lightcolor paddingright">Open</span>
+                        <span class="legendgreen"></span>
+                        <span class="lightcolor">Closed</span>
+                    </div>
+                    <div class="row paddingtop">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <canvas id="ticket-donut{{$index}}" width="50" height="50"></canvas>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Tickets and Maintenance Schedule End-->
+    </div>
+    <!--Content Wrapper End-->
+</div>

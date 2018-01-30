@@ -1,0 +1,48 @@
+<header>
+    <div class="header-band-lg shadow">
+        <div class="row">
+            <div class="Left-band">
+                <div class="Logo">
+                    <a href="#"><img alt="United Layer" id="Image-175275" src="rest/assets/images/United-Layer-Logo.png" /></a>
+                </div>
+            </div>
+            <!--Header Right Band Start-->
+
+            <div class="header-nav-left">
+                <ol class="breadcrumb breadcrumb-arrow">
+                    <li ng-repeat="crumb in breadCrumbs">
+                        <a ui-sref-active="active" ui-sref="{{crumb.route}}">{{crumb.title}}</a>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="header-nav-right">
+                <div class="top_nav">
+                    <div class="nav_container">
+                        <ul class="nav">
+                            <li class="nav-link">
+                                <span class="company-name"><a href="#" class="text_elipsis">My UL Demo, LLC</a></span>
+                                <span class="fa fa-bell-o"></span>
+                                <span class="label">{{notificationCount}}</span>
+                            </li>
+                            <li class="user-detail">
+
+                                <!--Drop Down Menu Starts-->
+                                <div class="dropdown">
+                                    <div class="user-name text_elipsis dropdown-toggle" id="menu1" data-toggle="dropdown">Welcome, {{userName}}<span class="dropdown-arrow"></span></div>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                        <li role="User Deatils"><a role="menuitem" tabindex="-1" ui-sref="home.profile">Profile Settings</a></li>
+                                        <li role="User Deatils" class="divider"></li>
+                                        <li role="User Deatils"><a role="menuitem" tabindex="-1" ng-click="logout()">Log out</a></li>
+                                    </ul>
+                                </div>
+                                <!--Drop Down Menu Ends-->
+                                <div class="user-pic"><img src="rest/assets/images/default_user.jpg" width="125" height="125" title=""></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

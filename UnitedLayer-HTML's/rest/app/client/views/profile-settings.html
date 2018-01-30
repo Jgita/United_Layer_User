@@ -1,0 +1,110 @@
+<!--Content Start-->
+<!--Tabs Level 1 Start-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tabs-level1">
+    <div class="ui-selectee">
+        <nav class="column">
+            <ul class="nav nav-tabs">
+                <span class="ulheading">Profile Settings</span>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Tabs Level 1 End-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row db-info shadow-btm"> </div>
+</div>
+
+<!--Tabs Level 1 End - Content Start-->
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 paddingright">
+            <div class=" middle-wrapper">
+                <div class="row  userbox">
+                    <div class="row">
+                        <h4>Demo User</h4>
+                    </div>
+                    <div class="row barpaddingtop"><a href="#">{{contactInfo}}</a></div>
+                </div>
+
+                <div class="row userbox-inner">
+                    <div class="row">
+                        <h6>Security Settings </h6>
+                    </div>
+                    <div class="row paddingtop"><button class="btn btn-default" type="button" ng-click="changePasswordModal()">Change Password</button></div>
+                </div>
+
+                <div class="row userbox-inner">
+                    <div class="row">
+                        <h6>Two-Factor Authentication:</h6>
+                    </div>
+                    <div class="row barpaddingtop">Disabled</div>
+                    <div class="row paddingtop"><button class="btn btn-default" type="button">Manage</button></div>
+                </div>
+
+                <div class="row userbox-inner">
+                    <div class="row">
+                        <h6>Last Login:</h6>
+                    </div>
+                    <div class="row barpaddingtop">{{lastLogin}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 paddingleft">
+            <div class="row middle-wrapper">
+                <div class="row cardbox-header">Roles</div>
+                <div class="row Dashwrap">
+                    <div class="row profile">
+                        <ul>
+                            <li ng-repeat="item in roles">{{item.role}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row paddingtop">
+                <div class="row middle-wrapper">
+                    <div class="row cardbox-header">Groups</div>
+                    <div class="row Dashwrap">
+                        <div class="row profile">
+                            <ul>
+                                <li ng-repeat="item in groups">{{item.group}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row paddingtop">
+                <div class="row middle-wrapper">
+                    <div class="row content-wrapper">
+                        <h1>Access Types Granted </h1>
+                    </div>
+                    <section id="no-more-tables" class="margintop20 middle-wrapper">
+                        <table class="table table-condensed">
+                            <thead class="cf">
+                                <tr>
+                                    <th ng-repeat="item in headers">
+                                        {{item.name}}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in grantedAccess">
+                                    <td>
+                                        {{item.type}}
+                                    </td>
+                                    <td>
+                                        {{item.description}}
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

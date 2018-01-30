@@ -1,0 +1,204 @@
+<html ng-app="unitedLayer">
+
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <script type="text/javascript" src="node_modules/moment/moment.js"></script>
+
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script type='text/javascript' src="node_modules/ng-infinite-scroll/build/ng-infinite-scroll.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="bower_components/ng-scrollbars/dist/scrollbars.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <!--chartjs-->
+    <script type="text/javascript" src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
+    <!--angular-spinner-->
+    <script type="text/javascript" src="node_modules/spin.js/spin.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-spinner/angular-spinner.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-loading-spinner/angular-loading-spinner.js"></script>
+
+    <!--angular-busy-->
+    <script type="text/javascript" src="bower_components/angular-busy/dist/angular-busy.min.js"></script>
+    <link href="bower_components/angular-busy/dist/angular-busy.min.css" rel="stylesheet" />
+
+    <!--Time Date Range Picker-->
+    <script type="text/javascript" src=" bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+    <script type="text/javascript" src="node_modules/angular-date-time-input/src/dateTimeInput.js"></script>
+    <script type="text/javascript" src="vendor/sidebar.min.js"></script>
+
+    <link rel="stylesheet" href="bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" type="text/css" />
+    <link href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" />
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link href="rest/app/client/components/left-panel/left-panel.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="bower_components/loaders.css/loaders.min.css" />
+    <link rel="stylesheet" href="node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
+    <link rel="stylesheet" href="node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css" />
+
+    <!--Date Range Picker for Angular and Bootstrap-->
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="bower_components/angular-daterangepicker/js/angular-daterangepicker.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css" />
+    <!--<link rel="stylesheet" href="rest/css/daterangepicker-bs3.css" />-->
+    <!--End Date Range Picker for Angular and Bootstrap-->
+
+    <link href="rest/css/sidebar.css" rel="stylesheet" />
+    <link href="rest/css/ui-tabs.css" rel="stylesheet" />
+    <link href="rest/css/style.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="rest/routes/routeConfig.js"></script>
+    <script type="text/javascript" src="rest/controllers/mainController.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/controllers/child-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/server-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/assets-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/organizations-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/tenant-management-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/united-setup-controller.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/components/left-panel/left-panel.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/header-content/header-content.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/inner-frame/inner-frame.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/pagination-content/pagination-content.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/components/organizations-content/organizations-content.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/users-content/users-content.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/controllers/assets-tab.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/colo-tab.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/company-tab.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/opportunities-tab.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/controllers/company-firewalls.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/company-load-balancers.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/company-servers.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/company-switches.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/company-virtual-machines.js"></script>
+
+    <script type="text/javascript" src="rest/directive/customSort.js"></script>
+
+    <!--united-cloud js-->
+    <script type="text/javascript" src="rest/app/client/controllers/devices-firewalls-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-switches-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-loadBalancers-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-hypervisors-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-hypervisors-proprtyDetails.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/controllers/devices-virtualMachines-allVMs.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-virtualMachines-AWS.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-virtualMachines-Azure.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-virtualMachines-openStack.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/devices-virtualMachines-VMware.js"></script>
+
+    <!--united-cloud component js-->
+    <script type="text/javascript" src="rest/app/client/components/custom-table/custom-table.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/unitedCloud-devices-content/unitedCloud-devices-content.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/devices-virtualMachines-content/devices-virtualMachines-content.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/unitedCloud-colo-content/unitedCloud-colo-content.js"></script>
+
+    <!--united-cloud private component js-->
+    <script type="text/javascript" src="rest/app/client/components/unitedCloud-private-content/unitedCloud-private-content.js"></script>
+    <!--<script type="text/javascript" src="rest/app/client/components/private-summery-view/private-summery-view.js"></script>-->
+    <script type="text/javascript" src="rest/app/client/controllers/private-VMware.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/private-OpenStack.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/private-HyperV.js"></script>
+
+    <script type="text/javascript" src="rest/app/client/components/unitedCloud-private-innerTabs/unitedCloud-private-innerTabs.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/private-summary.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/private-hypervisors.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/private-summery-details.js"></script>
+
+    <!--<script type="text/javascript" src="rest/app/client/controllers/private-VMware-summary.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/private-VMware-hypervisors.js"></script>-->
+
+    <!--united-cloud colo component js-->
+    <script type="text/javascript" src="rest/app/client/controllers/colo-cabinets-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/colo-PDUs-controller.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/colo-cages-controller.js"></script>
+
+    <!--details component js-->
+    <script type="text/javascript" src="rest/app/client/controllers/devices-details.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/colo-details.js"></script>
+
+    <!--united-cloud public component js-->
+    <script type="text/javascript" src="rest/app/client/components/unitedCloud-public-content/unitedCloud-public-content.js
+"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-Azure.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/add-account-modal.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/alert-modal.js"></script>
+    <script type="text/javascript" src="rest/app/client/components/public-AWS-details/public-AWS-details.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS-instances.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS-ElasticBlock.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS-Network.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS-loadBalancing.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS-autoScaling.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/AWS-instance-modal.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/public-AWS-virtualDetails.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/AWS-addRegion-modal.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/AWS-delete-modal.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/azure-account-modal.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/azure-resource-group.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/azure-editAccount-modal.js"></script>
+
+
+    <!--Customer Dashboard -->
+    <script type="text/javascript" src="rest/app/client/controllers/customer-dashboard.js"></script>
+    <script type="text/javascript" src="rest/app/client/controllers/events-info.js"></script>
+
+    <!--Angular Calender-->
+    <link href="node_modules/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
+    <script src="node_modules/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+
+    <!--Activity Log-->
+    <script rel="stylesheet" src="rest/app/client/controllers/activity-log.js"></script>
+
+    <!--profile-settings-->
+    <script rel="stylesheet" src="rest/app/client/controllers/profile-settings.js"></script>
+    <script rel="stylesheet" src="rest/app/client/controllers/change-Password-modal.js"></script>
+
+    <!--change-management-->
+    <script rel="stylesheet" src="rest/app/client/controllers/change-management.js"></script>
+    <script rel="stylesheet" src="rest/app/client/controllers/create-ticket-modal.js"></script>
+    <script rel="stylesheet" src="rest/app/client/controllers/change-management-details.js"></script>
+
+    <!--support-requests-->
+    <script rel="stylesheet" src="rest/app/client/controllers/support-requests.js"></script>
+
+    <!--maintenance-->
+    <script rel="stylesheet" src="rest/app/client/controllers/maintenance.js"></script>
+    <script rel="stylesheet" src="rest/app/client/controllers/add-maintenance-modal.js"></script>
+
+    <!--system-monitoring-->
+    <script rel="stylesheet" src="rest/app/client/controllers/system-monitoring.js"></script>
+
+</head>
+
+<body ng-controller="mainController">
+
+    <div class="container-fluid full-height no-padding">
+        <div id="holder" class="holder-grey">
+            <div ui-view></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

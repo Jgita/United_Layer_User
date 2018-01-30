@@ -1,0 +1,85 @@
+<!--Content Start-->
+
+<!--Tabs Level 1 Start-->
+<div class="row tabs-level1">
+    <div class="ui-selectee">
+        <nav class="column">
+            <ul class="nav nav-tabs">
+                <span class="ulheading">Customer Support</span>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Tabs Level 1 End-->
+<div class="row">
+    <div class="row db-info shadow-btm"> </div>
+</div>
+<div class="row content-wrapper">
+    <!--Left Table Start-->
+
+    <div class="row support-box">
+        <div class="row">This customer support portal is in beta status. For urgent support requests, please contact us via: </div>
+        <div class="row paddingtopbar">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><i class="fa fa-envelope-o fa-lg neongreen"></i>Email: <a href="#">support@unitedlayer.com</a></div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><i class="fa-phone fa fa-envelope-o fa-lg neongreen"></i>Phone: 1-415-349-2102 <span class="lightcolor paddingleft paddingright">| </span> Toll-free: 1-888-853-7733</div>
+        </div>
+    </div>
+    <div class="row paddingtop">
+        <div class="row middle-wrapper">
+            <div class="row cardbox-header">Ticket</div>
+            <div class="row Dashwrap" ng-repeat="item in ticketDetailsInfo">
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 paddingright">
+                    <div class="row">
+                        <strong> Subject</strong>: {{item.subject}}
+                    </div>
+                    <div class="row paddingtop">
+                        <strong>Description: </strong>
+                        <p class="">{{item.description}}</p>
+                    </div>
+                    <div class="row paddingtop">
+                        <strong>Zendesk URL:</strong> <a href="#">https://unitedlayer.zendesk.com/hc/en-us/requests/7110</a>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 paddingleft">
+                    <div class="row">
+                        <strong> Created at:</strong>
+                        <p class="">{{item.createdAt}}</p>
+                    </div>
+                    <div class="row paddingtop">
+                        <strong> Updated at:</strong>
+                        <p class="">{{item.updatedOn}}</p>
+                    </div>
+                    <div class="row paddingtop">
+                        <strong> Created via:</strong>
+                        <p class="">{{item.createdVia}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row paddingtop">
+            <div class="row middle-wrapper">
+                <div class="row cardbox-header">Comments</div>
+                <div class="row">
+                    <div class="row Dashwrap">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Post New Comment</label>
+                            <textarea class="form-control" rows="5" id="comment" ng-model="cmtName" placeholder="Add your comment here"></textarea>
+                            <div class="row paddingtop"><button class="btn btn-default" type="button" ng-click='btn_post();'>Post</button></div>
+                        </div>
+                    </div>
+                    <div class="row userbox-inner">
+                        {{commentsCount}} Comments
+                    </div>
+                    <div class="row Dashwrap" ng-repeat="cmt in comments">
+                        <div class="row">
+                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 paddingright"><strong> {{cmt.users}} </strong></div>
+                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 paddingleft textright lightcolor">{{cmt.time}}</div>
+                        </div>
+                        <div class="row paddingtopbar">{{cmt.cmtSection}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+<!--Tabs Level 1 Start-->
+<div class="row tabs-level1">
+    <div class="ui-selectee">
+        <nav class="column">
+            <ul class="nav nav-tabs">
+                <span class="ulheading">Change Management</span>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Tabs Level 1 End-->
+<div class="row">
+    <div class="row db-info shadow-btm"> </div>
+</div>
+
+<div class="row content-wrapper">
+    <!--Left Table Start-->
+    <div class="col-xs-9 col-sm-8 col-md-9 col-lg-9 paddingright">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-5">
+                <h1>Change Tickets</h1>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="action-bar">
+                    <button class="btn btn-default" type="button" ng-click="createTicketModal()"> + Create Ticket</button>
+                </div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-5 col-lg-4 search-widget">
+                <form class="navbar-form">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Enter keyword">
+                        <button class="btn btn-search" type="submit">
+                            <i class="fa fa-search"></i>
+                            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <section id="no-more-tables" class="margintop20 middle-wrapper">
+            <table id="example" class="example table  table-condensed cf">
+                <thead class="cf">
+                    <tr>
+                        <th ng-repeat="item in headers">
+                            {{item.title}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tickets-row" ng-repeat-start="item in tickets" ng-click="ticketsDescription($index)">
+                        <td class="numeric">
+                            <a ng-click="ticketDetails(item)" ui-sref="home.changeManagementDetails">
+                            {{item.id}}
+                            </a>
+                        </td>
+                        <td class="">
+                            {{item.subject}}
+                        </td>
+                        <td>
+                            {{item.datacenter}}
+                        </td>
+                        <td class="">
+                            {{item.status}}
+                        </td>
+                        <td class="">
+                            {{item.priority}}
+                        </td>
+                        <td class="">
+                            {{item.updatedOn}}
+                        </td>
+                    </tr>
+                    <tr ng-repeat-end ng-show="activePosition == $index">
+                        <td colspan="6">{{item.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    <!--Left Table End Graphs Start-->
+
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 paddingleft">
+        <div class="row middle-wrapper Dashwrap">
+            <div class="row">
+                <h4>Tickets By Priority</h4>
+            </div>
+            <div class="row paddingtop">
+                <div class="col-xs-2 col-sm-2 col-md-1 col-lg-2"></div>
+                <div class="col-xs-8 col-sm-8 col-md-10 col-lg-8">
+                    <canvas id="priority-ticket-donut"></canvas>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-1 col-lg-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                    <span class="legendred"></span>
+                    <span class="lightcolor paddingright">Critical</span>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <span class="legendyellow"></span>
+                    <span class="lightcolor paddingright">High</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                    <span class="legendgreen"></span>
+                    <span class="lightcolor paddingright">Normal</span>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <span class="legendlight"></span>
+                    <span class="lightcolor paddingright">Low</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row paddingtop">
+            <div class="middle-wrapper Dashwrap">
+                <div class="row">
+                    <h4>Tickets By Status</h4>
+                </div>
+                <div class="row paddingtop">
+                    <div class="col-xs-2 col-sm-2 col-md-1 col-lg-2"></div>
+                    <div class="col-xs-8 col-sm-8 col-md-10 col-lg-8">
+                        <canvas id="status-ticket-donut"></canvas>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-1 col-lg-2"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 paddingleft">
+                        <span class="legendgreen"></span>
+                        <span class="lightcolor paddingright">Open </span>
+                    </div>
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        <span class="legendyellow"></span>
+                        <span class="lightcolor paddingright">Closed</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 paddingleft">
+                        <span class="legendred"></span>
+                        <span class="lightcolor paddingright">Pending </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row paddingtop">
+            <div class="middle-wrapper Dashwrap">
+                <div class="row">
+                    <h4>Tickets By Category</h4>
+                </div>
+                <div class="row paddingtop">
+                    <canvas id="myChart" height="450"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

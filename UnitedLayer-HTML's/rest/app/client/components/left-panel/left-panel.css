@@ -1,0 +1,14 @@
+ #tree-menu .opened>i {
+     background-image: url(rest/assets/images/icon-collapse.png);
+     background-repeat: no-repeat;
+     background-position: 220px;
+ }
+ 
+ #tree-menu .closed>i {
+     background-image: url(rest/assets/images/icon-expand.png);
+     background-repeat: no-repeat;
+     background-position: 220px;
+ }
+ /*.sign {
+     margin-left: 36% !important;
+ }*/

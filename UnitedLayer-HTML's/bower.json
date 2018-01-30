@@ -1,0 +1,42 @@
+{
+  "name": "unitedlayer",
+  "description": "",
+  "main": "",
+  "keywords": [
+    "demo",
+    "united",
+    "layer"
+  ],
+  "authors": [
+    "United Layer"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "angular-ui-router": "^1.0.5",
+    "angular-ui-bootstrap": "^2.5.0",
+    "angular-bootstrap": "^2.5.0",
+    "jquery-ui": "^1.12.1",
+    "ng-scrollbars": "^0.0.11",
+    "angular-floatThead": "angular-float-thead#^0.1.2",
+    "loaders.css": "^0.1.2",
+    "highcharts": "^5.0.14",
+    "fusioncharts": "^3.12.1",
+    "angular-fusioncharts": "^0.0.2",
+    "angular-busy": "^4.1.4",
+    "angular-animate": "^1.6.6",
+    "angular-sanitize": "^1.6.6",
+    "angular-daterangepicker": "^0.2.2",
+    "bootstrap-ui-datetime-picker": "^2.6.0"
+  },
+  "strict-ssl": false
+}

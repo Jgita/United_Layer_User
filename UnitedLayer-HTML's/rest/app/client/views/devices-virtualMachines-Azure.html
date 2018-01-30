@@ -1,0 +1,33 @@
+<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper mytabsclass ui-tabs ui-corner-all ui-widget ui-widget-content">-->
+<section id="no-more-tables" class="margintop20 middle-wrapper">
+    <table infinite-scroll='loadMore()' class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th ng-repeat="item in headers" custom-sort order="{{item.orders}}" sort="sort">{{item.name}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-show="items.length === 0">
+                <td class="center" colspan="3">Nobody is here</td>
+            </tr>
+
+            <tr ng-repeat="item in items | limitTo:numberToDisplay | orderBy:sort.sortingOrder:sort.reverse track by $index">
+                <td> {{item.name}} </td>
+                <td>{{item.type}}</td>
+                <td class="numeric "> {{item.location}}</td>
+                <td> {{item.resource}}</td>
+                <td> {{item.state}}</td>
+                <td> {{item.availabilitySet}}</td>
+                <!--<td>
+                    <div class="action-icons ">
+                        <a class="fa fa-pencil" href="# "></a>
+                        <a class="fa fa-trash-o" href="# "></a>
+                        <a class="fa fa-pencil-square-o" href="# "></a>
+                        <a class="fa fa-trash" href="# "></a>
+                    </div>
+                </td>-->
+            </tr>
+        </tbody>
+    </table>
+</section>
+<!--</div>-->

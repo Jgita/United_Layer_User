@@ -1,0 +1,27 @@
+<!--ANgular busy loader-->
+<div cg-busy="{promise:myPromise, message:'Loading...', backdrop:true, delay:0, minDuration:5000}">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row db-info shadow-btm"> </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="tabstyles tabs-level2">
+                <div id="tabs-ui-171882" class="mytabsclass ui-tabs ui-corner-all ui-widget ui-widget-content">
+                    <uib-tabset active="activeTabIndex">
+                        <uib-tab ng-click="startSpin()" value="Start spinner" active="activeTabIndex==$index" ng-repeat="tab in tabs" heading="{{tab.name}}" ui-sref="{{tab.route}}"></uib-tab>
+                    </uib-tabset>
+
+                    <!--Angular spinner -->
+                    <!--<div class="mydiv">-->
+                    <!--<span us-spinner="{radius:20, width:8, length: 16}" spinner-key="spinner-1"></span>-->
+                    <!--<div cg-busy="{promise:myPromise,message:'Loading Your Data'}"></div>-->
+                    <!--<div class="mydiv">-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="bg-color" ui-view></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

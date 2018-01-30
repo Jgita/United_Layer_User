@@ -1,0 +1,42 @@
+<!--Content Start-->
+<!--Tabs Level 1 Start-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tabs-level1">
+    <div class="ui-selectee">
+        <nav class="column">
+            <ul class="nav nav-tabs">
+                <span class="ulheading">System Monitoring</span>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!--Tabs Level 1 End-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row db-info shadow-btm"> </div>
+</div>
+
+<div class="row">
+    <!--Tabs Level 1 End-->
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 content-wrapper">
+        <div class="row">
+            <div ng-repeat="widget in widgetList" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 {{widget.paddingStyle}} ">
+                <div class="middle-wrapper">
+                    <div class="row cardbox-header">
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">{{widget.name}} <b class="dropdown-arrow"></b></a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="item in dropDownList">
+                                    <a data-toggle="tab" href="#">{{item}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </div>
+                    <div class="row System-Monitoring">
+                        <div class="System-Monitoring-inner">
+                            <img src="rest/assets/images/System-Monitoring-graph.jpg" width="304" height="234" alt="" /> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

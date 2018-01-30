@@ -1,0 +1,23 @@
+<aside id="side-wrapper" ng-scrollbars ng-scrollbars-config="scrollbarConfig">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div uib-accordion close-others="oneAtATime">
+            <ul class="nav nav-pills nav-stacked demo collapsed united-panel" id="tree-menu" uib-accordion-group ng-repeat="group in groups track by $index" is-open="open[$index]">
+                <li uib-accordion-heading ng-class="{isOpen: open[$index]}">
+                    <div  class="leftnav"><i ng-click="iconClick()" class="pull-left {{group.title.icon}}" ></i><span class="leftnav-title">{{group.title.name}}</span><i ng-hide="isTrue" class="pull-right fa" ng-class="{'fa-minus': open[$index], 'fa-plus': !open[$index]}"></i>
+                </li>
+                <ul class="first-level nested" ng-repeat="item in group.items">
+                    <li>
+                        <a ui-sref="{{item.route}}">
+                            <i class="{{item.icon}}"  tooltip-class="customTooltipClass"></i> {{item.name}}
+                        </a>
+                    </li>
+                </ul>
+            </ul>
+            </div>
+        </div>
+</aside>
+
+<div>
+    <a data-toggle="sidebar" ng-click="toggle()" is-open="false" class="navbar-brand" href="#"><i id="arrow" class="fa fa-chevron-left" aria-hidden="true"></i>
+    </a>
+</div>

@@ -1,0 +1,12 @@
+<div id="tabsui-1" class="pull-left width100" style="background: white">
+    <p>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Tabs3-wrapper">
+            <ul class="Tabs3 tabs-level3 ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                <uib-tabset>
+                    <uib-tab active="activeTabIndex" ng-repeat="tab in tabs" heading="{{tab.name}}" ui-sref="{{tab.route}}"></uib-tab>
+                </uib-tabset>
+                <div style="background: white" ui-view></div>
+            </ul>
+        </div>
+    </p>
+</div>
